@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardItem"
+    android:forceDarkAllowed="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="4dp">
+
+
+        <ImageView
+            android:id="@+id/margen"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/style_background_corner_round_left"
+            android:backgroundTint="@color/teal_700"
+            android:src="@drawable/ic_assured_workload"
+            app:layout_constraintBottom_toBottomOf="@id/itemCuest"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <LinearLayout
+            android:id="@+id/itemCuest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/style_background_corner_round_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/margen"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_entity_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Entidad"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/teal_700"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_delete_lending"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_delete"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_entity_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entidad"
+                android:textSize="16sp"
+                android:textColor="@color/teal_200" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <LinearLayout
+                    android:id="@+id/ly_pay"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:background="@drawable/style_background_corner_round"
+                    android:backgroundTint="@color/green_opacity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ly_detail_lending"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_attach_money"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Pagar"
+                        android:textColor="@color/white"
+                        android:textStyle="bold|italic"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ly_detail_lending"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:background="@drawable/style_background_corner_round"
+                    android:backgroundTint="@color/green_opacity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ly_view_pays"
+                    app:layout_constraintStart_toEndOf="@+id/ly_pay"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_details"
+                        app:tint="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Detalles"
+                        android:textColor="@color/white"
+                        android:textStyle="bold|italic"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ly_view_pays"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:background="@drawable/style_background_corner_round"
+                    android:backgroundTint="@color/green_opacity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ly_detail_lending"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_payments"
+                        app:tint="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Ver pagos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold|italic"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

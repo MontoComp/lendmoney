@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LendMoney</string>
+
+    <string name="home">Inicio</string>
+    <string name="lending">Préstamo</string>
+    <string name="payment">Pago</string>
+    <string name="logout">Cerrar sesión</string>
+
+    <string name="form_lending">Formulario Préstamo</string>
+    <string name="form_payment">Formulario Pago</string>
+    <string name="register">Registro</string>
+    <string name="detail_lending">Detalle de préstamo</string>
+</resources>

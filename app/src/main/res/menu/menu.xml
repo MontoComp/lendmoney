@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/Home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home"
+            android:iconTint="@color/white"
+            />
+
+    </group>
+
+    <group android:id="@+id/group3">
+        <item
+            android:id="@+id/Lending"
+            android:title="@string/lending"
+            android:icon="@drawable/ic_assured_workload"
+            android:iconTint="@color/white"
+            />
+    </group>
+
+    <group android:id="@+id/group4">
+        <item
+            android:id="@+id/logout"
+            android:title="@string/logout"
+            android:icon="@drawable/ic_exit_to_app"
+            android:iconTint="@color/white"
+            />
+    </group>
+</menu>

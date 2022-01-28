@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--region Inputs-->
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/green_opacity</item>
+        <item name="android:textColor">@color/green_black</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/green_black</item>
+        <item name="boxStrokeWidthFocused">3dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxCollapsedPaddingTop">-6dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:textColorHint">@color/green_black</item>
+        <item name="helperTextTextColor">@color/green_opacity</item>
+        <item name="hintTextColor">@color/green_black</item>
+        <item name="editTextColor">@color/green_black</item>
+        <item name="errorEnabled">false</item>
+        <item name="placeholderTextColor">@color/green_black</item>
+        <item name="hintTextAppearance">@style/TextAppearance.AppCompat.TextInputLayout.FloatingLabel</item>
+    </style>
+
+
+    <style name="TextAppearance.AppCompat.TextInputLayout.FloatingLabel" parent="@android:style/TextAppearance">
+        <item name="android:textColorHint">@color/green_opacity</item>
+        <item name="android:textColor">@color/green_opacity</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>
