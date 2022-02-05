@@ -22,10 +22,6 @@ import android.graphics.Bitmap
 import com.cixsolution.jzc.pevoex.Utils.toString64
 import android.content.DialogInterface
 
-
-
-
-
 class RegisterActivity : DisposableActivity() {
     private val pickImage = 100
     private val cameraImage = 1

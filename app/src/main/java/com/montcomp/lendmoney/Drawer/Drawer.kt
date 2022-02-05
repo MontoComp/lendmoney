@@ -12,6 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.cixsolution.jzc.pevoex.Utils.toBitMap
 import com.everis.zentros.Base.NetworkLayer.DisposableActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.montcomp.lendmoney.Base.PersistentData.Singleton
 import com.montcomp.lendmoney.Home.HomeActivity
@@ -19,6 +22,12 @@ import com.montcomp.lendmoney.Lending.LendingActivity
 import com.montcomp.lendmoney.Login.LoginActivity
 import com.montcomp.lendmoney.Payment.PaymentActivity
 import com.montcomp.lendmoney.R
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+
+
+
 
 open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,7 +35,16 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
     internal lateinit var drawer: DrawerLayout
     internal lateinit var toggle: ActionBarDrawerToggle
 
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+
     fun configureBurgerMenu() {
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(context, gso);
+
         val toolbar = context.findViewById(R.id.common_toolbar) as? Toolbar
         val tb = toolbar ?: return
         tb.setNavigationIcon(R.drawable.ic_menu)
@@ -48,10 +66,10 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
         val navUserImage = headerView?.findViewById(R.id.iv_image_user) as ImageView?
         val nav_Menu = navigationView?.getMenu()
 
-        if (Singleton.getInstance().globaluser?.gender == 1){
-            navUsericon?.setImageResource(R.drawable.hombre)
-        }else{
+        if (Singleton.getInstance().globaluser?.gender == 0){
             navUsericon?.setImageResource(R.drawable.mujer)
+        }else{
+            navUsericon?.setImageResource(R.drawable.hombre)
         }
         navUsericon?.setColorFilter(outContext.resources.getColor(R.color.white), PorterDuff.Mode.SRC_IN)
 
@@ -138,6 +156,9 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
             val intent = Intent(context, LoginActivity::class.java)
             ContextCompat.startActivity(context, intent, null)
             dialog.dismiss()
+
+            signOutGoogle()
+
             (context as? DisposableActivity)?.finish()
             /*mylogout(Keys.UserIdData.USERID.value, Keys.UserData.TOKEN.value,{
                 (context as? DisposableActivity)?.finish()
@@ -170,5 +191,12 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
                             failed()
                         }
                 )*/
+    }
+
+    private fun signOutGoogle() {
+        mGoogleSignInClient.signOut()
+            .addOnCompleteListener(context, OnCompleteListener<Void?> {
+                // ...
+            })
     }
 }

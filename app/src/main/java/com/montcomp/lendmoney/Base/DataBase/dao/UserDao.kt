@@ -27,6 +27,11 @@ interface UserDao {
         password: String?
     ) : DbUser?
 
+    @Query("SELECT * FROM usuario where nickName = :userName")
+    fun getDbUserByUser(
+        userName: String?
+    ) : DbUser?
+
     @Query("SELECT * FROM usuario")
     fun getAllDbUser() : List<DbUser>
 

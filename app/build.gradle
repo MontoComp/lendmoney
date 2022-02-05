@@ -56,6 +56,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.codesgood:justifiedtextview:1.1.0'
 
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+
     implementation "androidx.room:room-runtime:2.2.5"
     implementation "androidx.room:room-ktx:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
