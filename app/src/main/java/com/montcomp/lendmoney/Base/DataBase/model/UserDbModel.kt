@@ -19,5 +19,6 @@ class DbUser(
     val image: String?,
     val rol: Int?,
     val state: Boolean,
-    val dateCreation: Long? = Date().time
+    val dateCreation: Long? = Date().time,
+    var email: String?,
 ): Serializable

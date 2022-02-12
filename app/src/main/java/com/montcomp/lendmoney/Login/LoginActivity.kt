@@ -220,7 +220,8 @@ class LoginActivity : DisposableActivity() {
                                         genderGoogle,
                                         userGeneral!!.image,
                                         userGeneral!!.rol,
-                                        userGeneral!!.state
+                                        userGeneral!!.state,
+                                        email = userGeneral!!.email
                                     )
                                 )
 
@@ -246,7 +247,8 @@ class LoginActivity : DisposableActivity() {
                                         genderGoogle,
                                         image?.toString64(),
                                         1,
-                                        false
+                                        false,
+                                        email = personEmail
                                     )
                                 )
                                 withContext(Dispatchers.Main){

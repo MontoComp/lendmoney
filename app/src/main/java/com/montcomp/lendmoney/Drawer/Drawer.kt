@@ -64,6 +64,7 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
         val navUsername = headerView?.findViewById(R.id.nav_header_textView) as TextView?
         val navUsericon = headerView?.findViewById(R.id.icon_drawer_type) as ImageView?
         val navUserImage = headerView?.findViewById(R.id.iv_image_user) as ImageView?
+        val navUseremail = headerView?.findViewById(R.id.tv_email) as TextView?
         val nav_Menu = navigationView?.getMenu()
 
         if (Singleton.getInstance().globaluser?.gender == 0){
@@ -115,8 +116,8 @@ open class Drawer(val outContext: DisposableActivity): NavigationView.OnNavigati
             }
         }
 
-        val userName =  Singleton.getInstance().globaluser?.nickName?.capitalize()
-        navUsername?.text = userName
+        navUsername?.text = Singleton.getInstance().globaluser?.nickName?.capitalize()
+        navUseremail?.text = Singleton.getInstance().globaluser?.email
 
         navigationView?.setNavigationItemSelectedListener(this)
     }

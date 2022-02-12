@@ -21,11 +21,15 @@ import kotlinx.coroutines.withContext
 import android.graphics.Bitmap
 import com.cixsolution.jzc.pevoex.Utils.toString64
 import android.content.DialogInterface
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RegisterActivity : DisposableActivity() {
     private val pickImage = 100
     private val cameraImage = 1
     var newImage : String ?= null
+    var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+    //val EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
 
     lateinit var binding : ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,28 +66,39 @@ class RegisterActivity : DisposableActivity() {
                         if (etPasswordConfirm.text?.isBlank()==false){
                             if (etAge.text?.isBlank()==false){
                                 if (etPassword.text.toString() == etPasswordConfirm.text.toString()){
-                                    displayWaiting()
-                                    CoroutineScope(Dispatchers.IO).launch {
-                                        Singleton.getInstance().database?.userDao()?.insertDbUser(
-                                            DbUser(
-                                                0,
-                                                etNickname.text?.toString(),
-                                                etPassword.text?.toString(),
-                                                etPasswordConfirm.text?.toString(),
-                                                etAge.text?.toString()?.toInt(),
-                                                if(rbMale.isChecked) 1 else 0,
-                                                newImage,
-                                                1,
-                                                false
-                                            )
-                                        )
-                                        withContext(Dispatchers.Main){
-                                            hideWaiting()
-                                            Toast.makeText(this@RegisterActivity, "Usuario creado", Toast.LENGTH_SHORT).show()
-                                            val i = Intent(this@RegisterActivity, LoginActivity::class.java)
-                                            startActivity(i)
-                                            finishActivity()
+                                    if (etEmail.text?.isBlank()==false){
+                                        val pattern: Pattern = Pattern.compile(emailPattern)
+                                        val matcher: Matcher = pattern.matcher(etEmail.text.toString().trim())
+                                        if (matcher.matches()){
+                                            displayWaiting()
+                                            CoroutineScope(Dispatchers.IO).launch {
+                                                Singleton.getInstance().database?.userDao()?.insertDbUser(
+                                                    DbUser(
+                                                        0,
+                                                        etNickname.text?.toString(),
+                                                        etPassword.text?.toString(),
+                                                        etPasswordConfirm.text?.toString(),
+                                                        etAge.text?.toString()?.toInt(),
+                                                        if(rbMale.isChecked) 1 else 0,
+                                                        newImage,
+                                                        1,
+                                                        false,
+                                                        email = etEmail.text.toString().trim()
+                                                    )
+                                                )
+                                                withContext(Dispatchers.Main){
+                                                    hideWaiting()
+                                                    Toast.makeText(this@RegisterActivity, "Usuario creado", Toast.LENGTH_SHORT).show()
+                                                    val i = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                                    startActivity(i)
+                                                    finishActivity()
+                                                }
+                                            }
+                                        }else{
+                                            Toast.makeText(this@RegisterActivity, "Correo electrónico invalido", Toast.LENGTH_SHORT).show()
                                         }
+                                    }else{
+                                        Toast.makeText(this@RegisterActivity, "Debe escribir un correo eletrónico", Toast.LENGTH_SHORT).show()
                                     }
                                 }else{
                                     Toast.makeText(this@RegisterActivity, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
